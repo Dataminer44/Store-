@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LuxeThread — Curated international clothes from the world's finest artisans. Shop Milano linen, Kyoto silk, Copenhagen wool and more.">
+  <title>LuxeThread — Curated International Clothes</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    Free international shipping on orders over $200 &nbsp;·&nbsp; New arrivals every Thursday
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="navbar-inner">
+      <a href="index.html" class="nav-logo">Luxe<span>Thread</span></a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="pages/shop.html">Shop</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Categories ▾</a>
+          <div class="dropdown-menu">
+            <a href="pages/shop.html?category=women">Women</a>
+            <a href="pages/shop.html?category=men">Men</a>
+            <a href="pages/shop.html?category=kids">Kids</a>
+            <a href="pages/shop.html?category=accessories">Accessories</a>
+          </div>
+        </li>
+        <li><a href="pages/about.html">About</a></li>
+        <li><a href="pages/contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="pages/auth.html" class="nav-icon-btn" aria-label="Account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="pages/cart.html" class="nav-icon-btn" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div class="mobile-nav" role="dialog" aria-label="Mobile menu">
+    <button class="mobile-nav-close" aria-label="Close">×</button>
+    <a href="index.html">Home</a>
+    <a href="pages/shop.html">Shop</a>
+    <a href="pages/shop.html?category=women">Women</a>
+    <a href="pages/shop.html?category=men">Men</a>
+    <a href="pages/shop.html?category=kids">Kids</a>
+    <a href="pages/shop.html?category=accessories">Accessories</a>
+    <a href="pages/about.html">About</a>
+    <a href="pages/contact.html">Contact</a>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" aria-label="Hero">
+      <div class="hero-content">
+        <span class="hero-eyebrow">SS 2026 Collection</span>
+        <h1 class="hero-title">Curated<br><em>International</em><br>Clothes</h1>
+        <p class="hero-sub">Discover exceptional garments from the world's finest artisans — Italian linen, Japanese silk, Danish wool, and beyond.</p>
+        <div class="hero-actions">
+          <a href="pages/shop.html" class="btn btn-primary">Shop Now →</a>
+          <a href="pages/about.html" class="btn btn-outline">Our Story</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <strong>40+</strong>
+            <span>Countries</span>
+          </div>
+          <div class="hero-stat">
+            <strong>2K+</strong>
+            <span>Products</span>
+          </div>
+          <div class="hero-stat">
+            <strong>98%</strong>
+            <span>Satisfied</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=85" alt="Curated international fashion" loading="eager">
+        <div class="hero-badge">
+          <div class="hero-badge-icon">🌍</div>
+          <div>
+            <strong>Ethically Sourced</strong>
+            <span>Direct from artisans</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Category Band -->
+    <div class="category-band">
+      <div class="category-band-inner">
+        <a href="pages/shop.html?category=women" class="cat-pill">
+          <span class="cat-pill-icon">👗</span> Women
+        </a>
+        <a href="pages/shop.html?category=men" class="cat-pill">
+          <span class="cat-pill-icon">🧥</span> Men
+        </a>
+        <a href="pages/shop.html?category=kids" class="cat-pill">
+          <span class="cat-pill-icon">🧒</span> Kids
+        </a>
+        <a href="pages/shop.html?category=accessories" class="cat-pill">
+          <span class="cat-pill-icon">👜</span> Accessories
+        </a>
+        <a href="pages/shop.html" class="cat-pill">
+          <span class="cat-pill-icon">✨</span> New Arrivals
+        </a>
+      </div>
+    </div>
+
+    <!-- Featured Products -->
+    <section class="featured" aria-label="Featured products">
+      <div class="container">
+        <div class="featured-header">
+          <div>
+            <span class="section-tag">Handpicked for You</span>
+            <h2 class="section-title">Featured Collection</h2>
+          </div>
+          <a href="pages/shop.html" class="btn btn-outline">View All →</a>
+        </div>
+        <!-- Products injected by JS -->
+        <div class="products-grid" id="featured-grid"></div>
+      </div>
+    </section>
+
+    <!-- Banner Strip -->
+    <section class="banner-strip">
+      <div class="container" style="position:relative;z-index:1">
+        <span class="section-tag" style="color:rgba(255,255,255,0.7)">Limited Time</span>
+        <h2 class="section-title">Up to 40% Off<br>Selected Items</h2>
+        <p>Seasonal sale — curated markdowns on premium international pieces.</p>
+        <a href="pages/shop.html" class="btn" style="background:white;color:var(--charcoal)">Shop the Sale →</a>
+      </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="categories-section" aria-label="Categories">
+      <div class="container">
+        <span class="section-tag">Browse by Category</span>
+        <h2 class="section-title">Shop Your Style</h2>
+        <div class="cat-grid">
+          <a href="pages/shop.html?category=women" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Women's Collection" loading="lazy">
+            <div class="cat-card-overlay">
+              <h3 class="cat-card-label">Women</h3>
+              <span class="cat-card-link">Explore → </span>
+            </div>
+          </a>
+          <a href="pages/shop.html?category=men" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=600&q=80" alt="Men's Collection" loading="lazy">
+            <div class="cat-card-overlay">
+              <h3 class="cat-card-label">Men</h3>
+              <span class="cat-card-link">Explore → </span>
+            </div>
+          </a>
+          <a href="pages/shop.html?category=kids" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1503919544645-bd372a4e45e3?w=600&q=80" alt="Kids Collection" loading="lazy">
+            <div class="cat-card-overlay">
+              <h3 class="cat-card-label">Kids</h3>
+              <span class="cat-card-link">Explore → </span>
+            </div>
+          </a>
+          <a href="pages/shop.html?category=accessories" class="cat-card">
+            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&q=80" alt="Accessories" loading="lazy">
+            <div class="cat-card-overlay">
+              <h3 class="cat-card-label">Accessories</h3>
+              <span class="cat-card-link">Explore → </span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" aria-label="Customer reviews">
+      <div class="container">
+        <div style="text-align:center;margin-bottom:0">
+          <span class="section-tag">Real Reviews</span>
+          <h2 class="section-title">What Our Customers Say</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"The Milano Linen Blazer exceeded all expectations. The craftsmanship is extraordinary — you can feel the difference immediately."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">👩</div>
+              <div>
+                <div class="testimonial-name">Sophie Laurent</div>
+                <div class="testimonial-location">Paris, France</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"I've been searching for authentic Japanese denim for years. The Tokyo Jacket is everything I hoped for — the selvedge quality is unmatched."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">👨</div>
+              <div>
+                <div class="testimonial-name">James Chen</div>
+                <div class="testimonial-location">Toronto, Canada</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"Fast shipping, beautiful packaging, and the Florence Leather Bag is an absolute treasure. Already developing a gorgeous patina."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">👩</div>
+              <div>
+                <div class="testimonial-name">Maria Santos</div>
+                <div class="testimonial-location">São Paulo, Brazil</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" aria-label="Newsletter signup">
+      <div class="container">
+        <div class="newsletter-inner">
+          <div>
+            <span class="section-tag">Stay in the Loop</span>
+            <h2 class="section-title">Early Access &<br>Exclusive Offers</h2>
+          </div>
+          <form class="newsletter-form" onsubmit="return false">
+            <input type="email" class="newsletter-input" placeholder="Your email address">
+            <button class="newsletter-btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">Luxe<span>Thread</span></div>
+          <p class="footer-desc">Curating the world's finest garments — connecting discerning shoppers with international artisans since 2020.</p>
+          <div class="footer-social">
+            <a href="#" class="social-link" aria-label="Instagram">📸</a>
+            <a href="#" class="social-link" aria-label="Pinterest">📌</a>
+            <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" aria-label="Facebook">f</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Shop</div>
+          <div class="footer-links">
+            <a href="pages/shop.html?category=women">Women</a>
+            <a href="pages/shop.html?category=men">Men</a>
+            <a href="pages/shop.html?category=kids">Kids</a>
+            <a href="pages/shop.html?category=accessories">Accessories</a>
+            <a href="pages/shop.html">New Arrivals</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Help</div>
+          <div class="footer-links">
+            <a href="#">Shipping Info</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">Track Order</a>
+            <a href="pages/contact.html">Contact Us</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-heading">Company</div>
+          <div class="footer-links">
+            <a href="pages/about.html">About Us</a>
+            <a href="#">Sustainability</a>
+            <a href="#">Press</a>
+            <a href="#">Careers</a>
+            <a href="admin.html">Admin</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 LuxeThread. All rights reserved. &nbsp;·&nbsp; Privacy Policy &nbsp;·&nbsp; Terms of Service</p>
+        <div class="payment-icons">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">PayPal</span>
+          <span class="payment-icon">Amex</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

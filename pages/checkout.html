@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout — LuxeThread</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="announcement-bar">Secure checkout — all transactions encrypted with SSL</div>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="nav-logo">Luxe<span>Thread</span></a>
+      <div class="nav-actions">
+        <a href="cart.html" class="nav-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="checkout-page">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="cart.html">Cart</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>Checkout</span>
+      </nav>
+
+      <div class="checkout-layout">
+        <!-- Left: Form -->
+        <div>
+          <!-- Contact -->
+          <div style="margin-bottom:36px">
+            <h2 class="checkout-section-title">Contact Information</h2>
+            <div class="form-grid">
+              <div class="form-field">
+                <label class="form-label">First Name *</label>
+                <input type="text" class="form-input" placeholder="Jane" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Last Name *</label>
+                <input type="text" class="form-input" placeholder="Doe" required>
+              </div>
+              <div class="form-field span-2">
+                <label class="form-label">Email Address *</label>
+                <input type="email" class="form-input" placeholder="jane@example.com" required>
+              </div>
+              <div class="form-field span-2">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" placeholder="+1 555 000 0000">
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Address -->
+          <div style="margin-bottom:36px">
+            <h2 class="checkout-section-title">Shipping Address</h2>
+            <div class="form-grid">
+              <div class="form-field span-2">
+                <label class="form-label">Street Address *</label>
+                <input type="text" class="form-input" placeholder="123 Main Street" required>
+              </div>
+              <div class="form-field span-2">
+                <label class="form-label">Apartment, suite, etc.</label>
+                <input type="text" class="form-input" placeholder="Apt 4B">
+              </div>
+              <div class="form-field">
+                <label class="form-label">City *</label>
+                <input type="text" class="form-input" placeholder="New York" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">State / Province</label>
+                <input type="text" class="form-input" placeholder="NY">
+              </div>
+              <div class="form-field">
+                <label class="form-label">ZIP / Postal Code *</label>
+                <input type="text" class="form-input" placeholder="10001" required>
+              </div>
+              <div class="form-field">
+                <label class="form-label">Country *</label>
+                <select class="form-select form-input" required>
+                  <option>United States</option>
+                  <option>United Kingdom</option>
+                  <option>Canada</option>
+                  <option>Australia</option>
+                  <option>France</option>
+                  <option>Germany</option>
+                  <option>Japan</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Shipping Method -->
+          <div style="margin-bottom:36px">
+            <h2 class="checkout-section-title">Shipping Method</h2>
+            <div class="payment-methods">
+              <label class="payment-method selected" style="cursor:pointer">
+                <input type="radio" name="shipping" checked>
+                <div>
+                  <div class="payment-method-label">Standard Shipping</div>
+                  <div style="font-size:12px;color:var(--charcoal-lt)">5–10 business days</div>
+                </div>
+                <div class="payment-method-icons" style="font-size:13px;font-weight:600">Free</div>
+              </label>
+              <label class="payment-method" style="cursor:pointer">
+                <input type="radio" name="shipping">
+                <div>
+                  <div class="payment-method-label">Express Shipping</div>
+                  <div style="font-size:12px;color:var(--charcoal-lt)">2–3 business days</div>
+                </div>
+                <div class="payment-method-icons" style="font-size:13px;font-weight:600">$24</div>
+              </label>
+              <label class="payment-method" style="cursor:pointer">
+                <input type="radio" name="shipping">
+                <div>
+                  <div class="payment-method-label">Overnight</div>
+                  <div style="font-size:12px;color:var(--charcoal-lt)">Next business day</div>
+                </div>
+                <div class="payment-method-icons" style="font-size:13px;font-weight:600">$48</div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div>
+            <h2 class="checkout-section-title">Payment</h2>
+            <div class="payment-methods" id="payment-methods">
+              <div class="payment-method selected" data-method="card">
+                <input type="radio" name="payment" checked>
+                <span class="payment-method-label">Credit / Debit Card</span>
+                <div class="payment-method-icons">
+                  <span class="payment-method-icon">VISA</span>
+                  <span class="payment-method-icon">MC</span>
+                </div>
+              </div>
+              <div class="payment-method" data-method="paypal">
+                <input type="radio" name="payment">
+                <span class="payment-method-label">PayPal</span>
+                <div class="payment-method-icons">
+                  <span class="payment-method-icon">PayPal</span>
+                </div>
+              </div>
+              <div class="payment-method" data-method="amex">
+                <input type="radio" name="payment">
+                <span class="payment-method-label">American Express</span>
+                <div class="payment-method-icons">
+                  <span class="payment-method-icon">Amex</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Fields -->
+            <div class="card-fields" id="card-fields" style="display:grid;margin-top:16px">
+              <div class="form-field span-2" style="grid-column:span 2">
+                <label class="form-label">Card Number</label>
+                <input type="text" class="form-input" placeholder="4242 4242 4242 4242" maxlength="19"
+                       oninput="formatCardNumber(this)">
+              </div>
+              <div class="form-field">
+                <label class="form-label">Expiry Date</label>
+                <input type="text" class="form-input" placeholder="MM / YY" maxlength="7">
+              </div>
+              <div class="form-field">
+                <label class="form-label">CVV</label>
+                <input type="text" class="form-input" placeholder="···" maxlength="4">
+              </div>
+              <div class="form-field" style="grid-column:span 2">
+                <label class="form-label">Cardholder Name</label>
+                <input type="text" class="form-input" placeholder="Jane Doe">
+              </div>
+            </div>
+
+            <!-- PayPal Note -->
+            <div id="paypal-note" style="display:none;padding:16px;background:var(--ivory);border-radius:var(--radius);margin-top:12px;font-size:13px;color:var(--charcoal-mid)">
+              🔵 You'll be redirected to PayPal to complete your purchase securely.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Order Summary -->
+        <div class="order-summary-panel">
+          <h2 class="checkout-section-title" style="border:none;padding:0;margin-bottom:20px">Order Summary</h2>
+
+          <!-- Mini Cart Items -->
+          <div class="mini-cart-items" id="mini-cart-items">
+            <div style="color:var(--charcoal-lt);font-size:13px">Loading cart…</div>
+          </div>
+
+          <hr style="border:none;border-top:1px solid var(--border);margin:16px 0">
+
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkout-subtotal">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="checkout-shipping">Free</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax</span>
+            <span>Included</span>
+          </div>
+          <div class="summary-row total" style="border-top:2px solid var(--charcoal);margin-top:8px;padding-top:16px">
+            <span>Total</span>
+            <span id="checkout-total">—</span>
+          </div>
+
+          <button class="place-order-btn" id="place-order">
+            🔒 &nbsp; Place Order
+          </button>
+
+          <p style="font-size:11px;color:var(--charcoal-lt);text-align:center;margin-top:12px;line-height:1.6">
+            By placing your order, you agree to LuxeThread's Terms of Service and Privacy Policy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="padding:28px 0">
+        <p>© 2026 LuxeThread. All rights reserved. &nbsp;·&nbsp; 🔒 SSL Secured</p>
+        <div class="payment-icons">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+  <script>
+    // Format card number with spaces
+    function formatCardNumber(input) {
+      let val = input.value.replace(/\D/g, '').substring(0, 16);
+      input.value = val.replace(/(.{4})/g, '$1 ').trim();
+    }
+
+    // Shipping method selection
+    document.querySelectorAll('.payment-method label, .payment-method').forEach(m => {
+      m.addEventListener('click', function() {
+        const parent = this.closest('.payment-methods');
+        if (parent) {
+          parent.querySelectorAll('.payment-method').forEach(x => x.classList.remove('selected'));
+          this.closest('.payment-method')?.classList.add('selected') || this.classList.add('selected');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

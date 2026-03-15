@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account — LuxeThread</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="announcement-bar">Free international shipping on orders over $200</div>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="nav-logo">Luxe<span>Thread</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="auth.html" class="nav-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="cart.html" class="nav-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="dashboard-page">
+    <div class="container">
+      <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside>
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;margin-bottom:20px;text-align:center">
+            <div style="font-size:48px;margin-bottom:8px">👤</div>
+            <div style="font-family:var(--font-display);font-size:1.2rem" id="user-greeting">Hello, Guest</div>
+            <div style="font-size:12px;color:var(--charcoal-lt);margin-bottom:16px">Member since 2026</div>
+            <a href="auth.html" class="btn btn-outline" style="font-size:11px;padding:8px 20px">Sign Out</a>
+          </div>
+
+          <nav class="dashboard-nav">
+            <div class="dashboard-nav-item active" onclick="showSection('orders')">
+              <span class="dashboard-nav-icon">📦</span> My Orders
+            </div>
+            <div class="dashboard-nav-item" onclick="showSection('profile')">
+              <span class="dashboard-nav-icon">👤</span> Profile
+            </div>
+            <div class="dashboard-nav-item" onclick="showSection('addresses')">
+              <span class="dashboard-nav-icon">📍</span> Addresses
+            </div>
+            <div class="dashboard-nav-item" onclick="showSection('wishlist')">
+              <span class="dashboard-nav-icon">♡</span> Wishlist
+            </div>
+            <div class="dashboard-nav-item" onclick="showSection('settings')">
+              <span class="dashboard-nav-icon">⚙️</span> Settings
+            </div>
+          </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="dashboard-content">
+          <!-- Orders Section -->
+          <div id="section-orders">
+            <h1 class="dashboard-greeting">My Orders</h1>
+
+            <div class="dashboard-cards">
+              <div class="dashboard-card">
+                <div class="dashboard-card-icon">📦</div>
+                <div class="dashboard-card-value">3</div>
+                <div class="dashboard-card-label">Total Orders</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-icon">✅</div>
+                <div class="dashboard-card-value">2</div>
+                <div class="dashboard-card-label">Delivered</div>
+              </div>
+              <div class="dashboard-card">
+                <div class="dashboard-card-icon">🚚</div>
+                <div class="dashboard-card-value">1</div>
+                <div class="dashboard-card-label">In Transit</div>
+              </div>
+            </div>
+
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+              <div style="padding:20px 20px 0;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--charcoal-lt)">
+                Order History
+              </div>
+              <table class="orders-table" style="margin-top:12px">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Profile Section -->
+          <div id="section-profile" style="display:none">
+            <h1 class="dashboard-greeting">Profile Settings</h1>
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;max-width:560px">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-input" placeholder="Jane">
+                </div>
+                <div class="form-field">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-input" placeholder="Doe">
+                </div>
+                <div class="form-field span-2">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-input" placeholder="jane@example.com">
+                </div>
+                <div class="form-field span-2">
+                  <label class="form-label">Phone</label>
+                  <input type="tel" class="form-input" placeholder="+1 555 000 0000">
+                </div>
+              </div>
+              <button class="btn btn-primary" style="margin-top:20px" onclick="showToast('Profile updated!','success')">Save Changes</button>
+            </div>
+          </div>
+
+          <!-- Addresses Section -->
+          <div id="section-addresses" style="display:none">
+            <h1 class="dashboard-greeting">Saved Addresses</h1>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:680px">
+              <div style="background:var(--white);border:2px solid var(--terra);border-radius:var(--radius-lg);padding:24px">
+                <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--terra);margin-bottom:12px">Default</div>
+                <div style="font-size:14px;line-height:1.8;color:var(--charcoal-mid)">
+                  Jane Doe<br>123 Main Street, Apt 4B<br>New York, NY 10001<br>United States
+                </div>
+                <button style="margin-top:12px;font-size:12px;color:var(--terra)" onclick="showToast('Edit address')">Edit →</button>
+              </div>
+              <div style="background:var(--ivory);border:1.5px dashed var(--border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer" onclick="showToast('Add new address')">
+                <span style="font-size:28px">+</span>
+                <span style="font-size:13px;color:var(--charcoal-lt)">Add New Address</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wishlist Section -->
+          <div id="section-wishlist" style="display:none">
+            <h1 class="dashboard-greeting">Wishlist</h1>
+            <div class="products-grid" id="wishlist-grid"></div>
+          </div>
+
+          <!-- Settings Section -->
+          <div id="section-settings" style="display:none">
+            <h1 class="dashboard-greeting">Account Settings</h1>
+            <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;max-width:480px">
+              <div style="display:flex;flex-direction:column;gap:20px">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--border)">
+                  <div>
+                    <div style="font-weight:500;font-size:14px">Email Notifications</div>
+                    <div style="font-size:12px;color:var(--charcoal-lt)">Receive order updates and promotions</div>
+                  </div>
+                  <input type="checkbox" checked style="accent-color:var(--terra);width:16px;height:16px">
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:20px;border-bottom:1px solid var(--border)">
+                  <div>
+                    <div style="font-weight:500;font-size:14px">SMS Notifications</div>
+                    <div style="font-size:12px;color:var(--charcoal-lt)">Shipping & delivery alerts</div>
+                  </div>
+                  <input type="checkbox" style="accent-color:var(--terra);width:16px;height:16px">
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <div>
+                    <div style="font-weight:500;font-size:14px;color:#C62828">Delete Account</div>
+                    <div style="font-size:12px;color:var(--charcoal-lt)">Permanently remove your account</div>
+                  </div>
+                  <button class="admin-action-btn delete" onclick="showToast('Account deletion requires confirmation','error')">Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/app.js"></script>
+  <script>
+    function showSection(name) {
+      document.querySelectorAll('[id^="section-"]').forEach(el => el.style.display = 'none');
+      document.getElementById('section-' + name).style.display = 'block';
+      document.querySelectorAll('.dashboard-nav-item').forEach(el => el.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    // Load wishlist products
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('wishlist-grid');
+      if (grid && typeof PRODUCTS !== 'undefined') {
+        grid.innerHTML = PRODUCTS.slice(1, 5).map(renderProductCard).join('');
+      }
+    });
+  </script>
+</body>
+</html>

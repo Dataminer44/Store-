@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In — LuxeThread</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="nav-logo">Luxe<span>Thread</span></a>
+      <div class="nav-actions">
+        <a href="cart.html" class="nav-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">Luxe<span>Thread</span></div>
+      <p class="auth-sub">Your gateway to international fashion</p>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <div class="auth-tab active" id="login-tab">Sign In</div>
+        <div class="auth-tab" id="register-tab">Create Account</div>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form" class="active">
+        <div class="auth-form">
+          <div class="form-field">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="login-email" placeholder="jane@example.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input" id="login-pass" placeholder="••••••••">
+          </div>
+          <div style="display:flex;justify-content:flex-end">
+            <a href="#" style="font-size:12px;color:var(--terra)">Forgot password?</a>
+          </div>
+          <button class="btn btn-primary" id="do-login" style="width:100%;justify-content:center">
+            Sign In →
+          </button>
+        </div>
+
+        <div class="auth-divider">or continue with</div>
+
+        <div class="social-auth">
+          <button class="social-auth-btn">
+            <span>G</span> Continue with Google
+          </button>
+          <button class="social-auth-btn">
+            <span>f</span> Continue with Facebook
+          </button>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div id="register-form" style="display:none">
+        <div class="auth-form">
+          <div class="form-field">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="reg-name" placeholder="Jane Doe">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="reg-email" placeholder="jane@example.com">
+          </div>
+          <div class="form-field">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-input" id="reg-pass" placeholder="Create a strong password">
+          </div>
+          <div style="font-size:11px;color:var(--charcoal-lt);line-height:1.6">
+            By creating an account, you agree to our <a href="#" style="color:var(--terra)">Terms of Service</a> and <a href="#" style="color:var(--terra)">Privacy Policy</a>.
+          </div>
+          <button class="btn btn-terra" id="do-register" style="width:100%;justify-content:center">
+            Create Account →
+          </button>
+        </div>
+      </div>
+
+      <p class="auth-footer-link">
+        <span id="login-tab">New to LuxeThread?</span>
+        <a href="#" onclick="document.getElementById('register-tab').click();return false"> Create an account →</a>
+      </p>
+    </div>
+  </main>
+
+  <script src="../js/app.js"></script>
+  <script>
+    // Toggle register form display
+    document.getElementById('register-tab').addEventListener('click', () => {
+      document.getElementById('register-form').style.display = 'block';
+      document.getElementById('login-form').style.display = 'none';
+    });
+    document.getElementById('login-tab').addEventListener('click', () => {
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('register-form').style.display = 'none';
+    });
+  </script>
+</body>
+</html>

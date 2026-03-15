@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — LuxeThread</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="admin-page">
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar">
+      <div class="admin-logo">Luxe<span>Thread</span><br><span style="font-size:0.7rem;color:rgba(247,244,239,0.4);font-family:var(--font-body);letter-spacing:0.12em;text-transform:uppercase">Admin Panel</span></div>
+
+      <nav>
+        <div class="admin-nav-item active" onclick="showAdminSection('dashboard')">
+          📊 &nbsp; Dashboard
+        </div>
+        <div class="admin-nav-item" onclick="showAdminSection('products')">
+          👗 &nbsp; Products
+        </div>
+        <div class="admin-nav-item" onclick="showAdminSection('orders')">
+          📦 &nbsp; Orders
+        </div>
+        <div class="admin-nav-item" onclick="showAdminSection('customers')">
+          👥 &nbsp; Customers
+        </div>
+        <div class="admin-nav-item" onclick="showAdminSection('reports')">
+          📈 &nbsp; Reports
+        </div>
+        <div class="admin-nav-item" style="margin-top:auto" onclick="window.location.href='index.html'">
+          🏠 &nbsp; View Site
+        </div>
+      </nav>
+
+      <div style="position:absolute;bottom:24px;left:24px;right:24px">
+        <div style="display:flex;align-items:center;gap:10px;padding:12px;background:rgba(255,255,255,0.06);border-radius:var(--radius)">
+          <span>👤</span>
+          <div>
+            <div style="font-size:12px;color:var(--ivory);font-weight:500">Admin User</div>
+            <div style="font-size:10px;color:rgba(247,244,239,0.4)">admin@luxethread.com</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Admin Main -->
+    <main class="admin-main">
+
+      <!-- Dashboard Section -->
+      <div id="admin-section-dashboard">
+        <div class="admin-header">
+          <h1 class="admin-title">Dashboard Overview</h1>
+          <div style="font-size:12px;color:var(--charcoal-lt)">Last updated: Today, 09:42 AM</div>
+        </div>
+
+        <div class="admin-stats">
+          <div class="admin-stat-card">
+            <div class="admin-stat-value">$24,380</div>
+            <div class="admin-stat-label">Revenue This Month</div>
+            <div style="font-size:11px;color:var(--sage);margin-top:4px">↑ 18% vs last month</div>
+          </div>
+          <div class="admin-stat-card" style="border-left-color:var(--sage)">
+            <div class="admin-stat-value">148</div>
+            <div class="admin-stat-label">Orders This Month</div>
+            <div style="font-size:11px;color:var(--sage);margin-top:4px">↑ 12% vs last month</div>
+          </div>
+          <div class="admin-stat-card" style="border-left-color:#7A8C6E">
+            <div class="admin-stat-value">2,104</div>
+            <div class="admin-stat-label">Total Customers</div>
+            <div style="font-size:11px;color:var(--sage);margin-top:4px">↑ 8% vs last month</div>
+          </div>
+          <div class="admin-stat-card" style="border-left-color:#8B7355">
+            <div class="admin-stat-value">94%</div>
+            <div class="admin-stat-label">Fulfillment Rate</div>
+            <div style="font-size:11px;color:var(--sage);margin-top:4px">On track</div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Mini Table -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:24px">
+          <div style="padding:20px;font-family:var(--font-display);font-size:1.2rem;border-bottom:1px solid var(--border)">
+            Recent Orders
+          </div>
+          <table class="admin-table">
+            <thead><tr>
+              <th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th>
+            </tr></thead>
+            <tbody id="admin-orders-table"></tbody>
+          </table>
+        </div>
+
+        <!-- Top Products -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px">
+          <div style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:20px">Top Performing Products</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px" id="top-products"></div>
+        </div>
+      </div>
+
+      <!-- Products Section -->
+      <div id="admin-section-products" style="display:none">
+        <div class="admin-header">
+          <h1 class="admin-title">Products</h1>
+          <button class="btn btn-terra" onclick="showAddProductModal()">+ Add Product</button>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:20px;display:flex;gap:12px;align-items:center">
+          <input type="text" class="form-input" placeholder="Search products…" style="max-width:280px" oninput="filterProducts(this.value)">
+          <select class="sort-select">
+            <option>All Categories</option>
+            <option>Women</option>
+            <option>Men</option>
+            <option>Kids</option>
+            <option>Accessories</option>
+          </select>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+          <table class="admin-table">
+            <thead><tr>
+              <th>ID</th><th>Product</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th>
+            </tr></thead>
+            <tbody id="admin-products-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Orders Section -->
+      <div id="admin-section-orders" style="display:none">
+        <div class="admin-header">
+          <h1 class="admin-title">Orders</h1>
+          <div style="display:flex;gap:10px">
+            <button class="btn btn-outline" style="font-size:11px;padding:8px 20px">Export CSV</button>
+          </div>
+        </div>
+
+        <!-- Order Stats -->
+        <div class="admin-stats" style="grid-template-columns:repeat(3,1fr)">
+          <div class="admin-stat-card">
+            <div class="admin-stat-value">12</div>
+            <div class="admin-stat-label">Processing</div>
+          </div>
+          <div class="admin-stat-card" style="border-left-color:var(--sage)">
+            <div class="admin-stat-value">34</div>
+            <div class="admin-stat-label">Shipped</div>
+          </div>
+          <div class="admin-stat-card" style="border-left-color:#7A8C6E">
+            <div class="admin-stat-value">102</div>
+            <div class="admin-stat-label">Delivered</div>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+          <table class="admin-table">
+            <thead><tr>
+              <th>Order ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th>
+            </tr></thead>
+            <tbody id="admin-orders-table-2"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Customers Section -->
+      <div id="admin-section-customers" style="display:none">
+        <div class="admin-header">
+          <h1 class="admin-title">Customers</h1>
+        </div>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden">
+          <table class="admin-table">
+            <thead><tr>
+              <th>Name</th><th>Email</th><th>Orders</th><th>Total Spent</th><th>Joined</th>
+            </tr></thead>
+            <tbody>
+              <tr><td>Sophie Laurent</td><td>sophie@example.com</td><td>4</td><td>$1,248</td><td>Jan 2026</td></tr>
+              <tr><td>James Chen</td><td>james@example.com</td><td>2</td><td>$634</td><td>Feb 2026</td></tr>
+              <tr><td>Maria Santos</td><td>maria@example.com</td><td>7</td><td>$2,180</td><td>Nov 2025</td></tr>
+              <tr><td>Amir Hosseini</td><td>amir@example.com</td><td>1</td><td>$420</td><td>Mar 2026</td></tr>
+              <tr><td>Chloe Martin</td><td>chloe@example.com</td><td>3</td><td>$895</td><td>Dec 2025</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Reports Section -->
+      <div id="admin-section-reports" style="display:none">
+        <div class="admin-header">
+          <h1 class="admin-title">Sales Reports</h1>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px">
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:20px">Monthly Revenue</h3>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>March 2026</span><span style="font-weight:600">$24,380</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:85%;background:var(--terra);border-radius:3px"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>February 2026</span><span style="font-weight:600">$20,640</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:72%;background:var(--terra);border-radius:3px"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>January 2026</span><span style="font-weight:600">$18,200</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:63%;background:var(--terra);border-radius:3px"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>December 2025</span><span style="font-weight:600">$28,900</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:100%;background:var(--terra);border-radius:3px"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px">
+            <h3 style="font-family:var(--font-display);font-size:1.1rem;margin-bottom:20px">Sales by Category</h3>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>Women</span><span style="color:var(--charcoal-lt)">42%</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:42%;background:var(--sage);border-radius:3px"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>Men</span><span style="color:var(--charcoal-lt)">31%</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:31%;background:var(--charcoal-mid);border-radius:3px"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>Accessories</span><span style="color:var(--charcoal-lt)">18%</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:18%;background:var(--terra-light);border-radius:3px"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px">
+                  <span>Kids</span><span style="color:var(--charcoal-lt)">9%</span>
+                </div>
+                <div style="height:6px;background:var(--ivory-dark);border-radius:3px"><div style="height:100%;width:9%;background:var(--charcoal-lt);border-radius:3px"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div id="add-product-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9000;display:none;align-items:center;justify-content:center">
+    <div style="background:var(--white);border-radius:var(--radius-lg);padding:40px;width:560px;max-height:80vh;overflow-y:auto;position:relative">
+      <button onclick="hideAddProductModal()" style="position:absolute;top:16px;right:20px;font-size:20px;color:var(--charcoal-lt)">×</button>
+      <h2 style="font-family:var(--font-display);font-size:1.5rem;font-weight:300;margin-bottom:24px">Add New Product</h2>
+      <div class="form-grid">
+        <div class="form-field span-2">
+          <label class="form-label">Product Name</label>
+          <input type="text" class="form-input" placeholder="e.g. Milano Linen Blazer">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Price ($)</label>
+          <input type="number" class="form-input" placeholder="289">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Category</label>
+          <select class="form-select form-input">
+            <option>Women</option>
+            <option>Men</option>
+            <option>Kids</option>
+            <option>Accessories</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Origin Country</label>
+          <input type="text" class="form-input" placeholder="Italy">
+        </div>
+        <div class="form-field">
+          <label class="form-label">Stock Qty</label>
+          <input type="number" class="form-input" placeholder="50">
+        </div>
+        <div class="form-field span-2">
+          <label class="form-label">Description</label>
+          <textarea class="form-input" rows="3" placeholder="Product description…" style="resize:vertical"></textarea>
+        </div>
+        <div class="form-field span-2">
+          <label class="form-label">Image URL</label>
+          <input type="url" class="form-input" placeholder="https://…">
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:24px">
+        <button class="btn btn-terra" onclick="saveProduct()">Save Product</button>
+        <button class="btn btn-outline" onclick="hideAddProductModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script>
+    function showAdminSection(name) {
+      document.querySelectorAll('[id^="admin-section-"]').forEach(el => el.style.display = 'none');
+      document.getElementById('admin-section-' + name).style.display = 'block';
+      document.querySelectorAll('.admin-nav-item').forEach(el => el.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    function showAddProductModal() {
+      const modal = document.getElementById('add-product-modal');
+      modal.style.display = 'flex';
+    }
+
+    function hideAddProductModal() {
+      document.getElementById('add-product-modal').style.display = 'none';
+    }
+
+    function saveProduct() {
+      showToast('✓ Product saved successfully', 'success');
+      hideAddProductModal();
+    }
+
+    function filterProducts(query) {
+      const rows = document.querySelectorAll('#admin-products-table tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(query.toLowerCase()) ? '' : 'none';
+      });
+    }
+
+    // Clone orders table to second orders section
+    document.addEventListener('DOMContentLoaded', () => {
+      // Top products mini cards
+      const topProducts = document.getElementById('top-products');
+      if (topProducts && typeof PRODUCTS !== 'undefined') {
+        topProducts.innerHTML = PRODUCTS.slice(0, 4).map(p => `
+          <div style="text-align:center">
+            <img src="${p.images[0]}" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius);margin-bottom:8px">
+            <div style="font-size:12px;font-weight:500;color:var(--charcoal)">${p.name}</div>
+            <div style="font-size:11px;color:var(--terra)">$${p.price}</div>
+          </div>`).join('');
+      }
+
+      // Populate second orders table after init
+      setTimeout(() => {
+        const t1 = document.getElementById('admin-orders-table');
+        const t2 = document.getElementById('admin-orders-table-2');
+        if (t1 && t2) t2.innerHTML = t1.innerHTML;
+      }, 200);
+    });
+  </script>
+</body>
+</html>

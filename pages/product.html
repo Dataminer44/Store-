@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shop premium international garments at LuxeThread.">
+  <title>Product — LuxeThread</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="announcement-bar">Free international shipping on orders over $200</div>
+
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <a href="../index.html" class="nav-logo">Luxe<span>Thread</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li class="nav-dropdown">
+          <a href="#">Categories ▾</a>
+          <div class="dropdown-menu">
+            <a href="shop.html?category=women">Women</a>
+            <a href="shop.html?category=men">Men</a>
+            <a href="shop.html?category=kids">Kids</a>
+            <a href="shop.html?category=accessories">Accessories</a>
+          </div>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="auth.html" class="nav-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+        <a href="cart.html" class="nav-icon-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge">0</span>
+        </a>
+        <button class="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-nav">
+    <button class="mobile-nav-close">×</button>
+    <a href="../index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart</a>
+  </div>
+
+  <main class="product-page">
+    <div class="container">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-sep">›</span>
+        <a href="shop.html">Shop</a>
+        <span class="breadcrumb-sep">›</span>
+        <span id="breadcrumb-product">Product</span>
+      </nav>
+
+      <div class="product-layout">
+        <!-- Image Gallery -->
+        <div class="product-gallery">
+          <div class="gallery-main">
+            <img id="gallery-main-img" src="" alt="Product image">
+          </div>
+          <div class="gallery-thumbs" id="gallery-thumbs"></div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info-panel">
+          <p class="product-info-origin" id="product-origin"></p>
+          <h1 class="product-info-name" id="product-name"></h1>
+          <div class="product-info-rating" id="product-rating"></div>
+
+          <div>
+            <span class="product-info-price" id="product-price"></span>
+            <span class="product-info-price-old" id="product-old-price" style="display:none"></span>
+          </div>
+          <p class="product-info-tax">Tax included. Shipping calculated at checkout.</p>
+
+          <hr class="product-divider">
+
+          <!-- Color Selection -->
+          <div class="option-label">Color</div>
+          <div class="color-options" id="color-options"></div>
+
+          <!-- Size Selection -->
+          <div class="option-label">Size &nbsp;<a href="#" style="font-size:11px;color:var(--terra);letter-spacing:0.06em">Size Guide</a></div>
+          <div class="size-options" id="size-options"></div>
+
+          <!-- Quantity -->
+          <div class="option-label">Quantity</div>
+          <div class="qty-row">
+            <div class="qty-control">
+              <button class="qty-btn" id="qty-minus">−</button>
+              <input class="qty-input" type="number" id="qty-input" value="1" min="1" max="10">
+              <button class="qty-btn" id="qty-plus">+</button>
+            </div>
+          </div>
+
+          <!-- Add to Cart -->
+          <button class="add-to-cart-btn" id="add-to-cart">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            Add to Cart
+          </button>
+
+          <!-- Wishlist -->
+          <button class="wishlist-btn" id="wishlist-btn">
+            ♡ &nbsp; Save to Wishlist
+          </button>
+
+          <!-- Features -->
+          <div class="product-features" id="product-features"></div>
+
+          <!-- Trust badges -->
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:20px;background:var(--ivory);border-radius:var(--radius-lg)">
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--charcoal-mid)">
+              🚚 <span>Free shipping over $200</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--charcoal-mid)">
+              ↩ <span>30-day free returns</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--charcoal-mid)">
+              🔒 <span>Secure checkout</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--charcoal-mid)">
+              ✓ <span>Authenticity guaranteed</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs: Description / Details / Reviews -->
+      <div class="product-tabs">
+        <div class="tab-nav">
+          <button class="tab-btn active" data-tab="tab-description">Description</button>
+          <button class="tab-btn" data-tab="tab-details">Details & Care</button>
+          <button class="tab-btn" data-tab="tab-reviews">Reviews (4)</button>
+        </div>
+
+        <div id="tab-description" class="tab-content active">
+          <p id="product-description" style="max-width:680px"></p>
+        </div>
+
+        <div id="tab-details" class="tab-content">
+          <div id="product-features-tab" style="display:flex;flex-direction:column;gap:12px;max-width:480px">
+            <p style="color:var(--charcoal-lt);font-size:14px">Detailed care and material information available on the physical label. Always follow manufacturer's instructions for best results.</p>
+          </div>
+        </div>
+
+        <div id="tab-reviews" class="tab-content">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px">
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★★</div>
+              <p class="testimonial-text">"Absolutely stunning quality. Worth every penny."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">👩</div>
+                <div>
+                  <div class="testimonial-name">Emma W.</div>
+                  <div class="testimonial-location">Verified Purchase</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars">★★★★☆</div>
+              <p class="testimonial-text">"The fabric feels luxurious. Runs slightly large, order one size down."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar">👨</div>
+                <div>
+                  <div class="testimonial-name">Lucas M.</div>
+                  <div class="testimonial-location">Verified Purchase</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Related Products -->
+      <div style="margin-top:80px">
+        <span class="section-tag">You May Also Like</span>
+        <h2 class="section-title" style="margin-bottom:40px">Related Products</h2>
+        <div class="products-grid" id="related-grid"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="padding:28px 0">
+        <p>© 2026 LuxeThread. All rights reserved.</p>
+        <div class="payment-icons">
+          <span class="payment-icon">VISA</span>
+          <span class="payment-icon">MC</span>
+          <span class="payment-icon">PayPal</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/app.js"></script>
+</body>
+</html>
